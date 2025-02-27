@@ -4,7 +4,7 @@ This repository contains a test suite for the authentication system of a FastAPI
 
 ---
 
-## ** Features Covered in Tests**
+##  Features Covered in Tests
 - ✅ **User Registration** (New user, duplicate user, invalid referral code, self-referral, successful referral)  
 - ✅ **User Login** (Valid and invalid credentials)  
 - ✅ **User Logout**  
@@ -42,9 +42,9 @@ pytest test_auth.py -s
 ### Reset password using token
 **POST** `/password/reset-password`
 ### Generate referral link for user
-**POST** `/referral/referral-link?user_id=1`
+**GET** `/referral/referral-link?user_id=1`
 ### Generate referral statistics
-**POST** `/referral/referral-stats?user_id=1`
+**GET** `/referral/referral-stats?user_id=1`
  
 ---
 
