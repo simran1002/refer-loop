@@ -40,7 +40,6 @@ def register(request: Request, user: schemas.UserCreate, db: Session = Depends(g
     db.commit()
     db.refresh(new_user)
 
-    # **Handle Referral Logic**
     if user.referral_code:
         referrer = db.query(models.User).filter(models.User.referral_code == user.referral_code).first()
         if referrer:

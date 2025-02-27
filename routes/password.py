@@ -15,8 +15,7 @@ async def forgot_password(request: schemas.PasswordResetRequest, db: Session = D
 
     reset_token = utils.create_access_token({"email": user.email}, expires_delta=timedelta(minutes=15))
 
-    # Send Email with Reset Link
-    reset_link = f"https://yourfrontend.com/reset-password?token={reset_token}"
+    reset_link = f"https://vomychat.com/reset-password?token={reset_token}"
     email_body = f"""
     <h3>Password Reset Request</h3>
     <p>Click the link below to reset your password:</p>
@@ -24,7 +23,6 @@ async def forgot_password(request: schemas.PasswordResetRequest, db: Session = D
     <p>If you did not request a password reset, ignore this email.</p>
     """
 
-    # Send the email
     await send_email("Reset Your Password", user.email, email_body)
 
     return {"message": "Password reset link sent to email", "reset_token": reset_token}

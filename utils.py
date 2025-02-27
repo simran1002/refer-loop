@@ -25,14 +25,12 @@ def create_access_token(data: dict, expires_delta: timedelta = timedelta(hours=1
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-# Generate a token
 def generate_token(data: dict, expires_delta: timedelta = timedelta(hours=1)):
     to_encode = data.copy()
     expire = datetime.utcnow() + expires_delta
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-# Decode a token
 def decode_token(token: str):
     try:
         decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])

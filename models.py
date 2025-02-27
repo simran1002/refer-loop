@@ -12,7 +12,7 @@ class User(Base):
     password_hash = Column(String)
     referral_code = Column(String, unique=True)
     referred_by = Column(Integer, ForeignKey("users.id"), nullable=True)
-    referral_credits = Column(Integer, default=0)  # Reward system
+    referral_credits = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     referrer = relationship("User", remote_side=[id])
@@ -23,7 +23,7 @@ class Referral(Base):
     id = Column(Integer, primary_key=True, index=True)
     referrer_id = Column(Integer, ForeignKey("users.id"))
     referred_user_id = Column(Integer, ForeignKey("users.id"))
-    status = Column(String, default="pending")  # Pending, successful, failed
+    status = Column(String, default="pending")
     date_referred = Column(DateTime, default=datetime.utcnow)
 
     referrer_user = relationship("User", foreign_keys=[referrer_id], backref="referrals_made")

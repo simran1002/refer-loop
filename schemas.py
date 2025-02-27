@@ -5,7 +5,7 @@ import re
 class UserCreate(BaseModel):
     username: str
     email: EmailStr
-    password: constr(min_length=8, max_length=20)  # Updated password constraint
+    password: constr(min_length=8, max_length=20) 
     referral_code: Optional[str] = None
 
     @validator("password")

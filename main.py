@@ -21,7 +21,6 @@ app.add_middleware(SlowAPIMiddleware)
 
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# Create database tables
 models.Base.metadata.create_all(bind=engine)
 app.add_middleware(SlowAPIMiddleware)
 async def rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded):
@@ -30,7 +29,7 @@ async def rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded):
         content={"detail": "Too many requests. Please try again later."}
     )
 
-# Include routers
+
 app.include_router(auth.router)
 app.include_router(password.router)
 app.include_router(referral.router)
