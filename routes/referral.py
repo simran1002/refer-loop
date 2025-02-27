@@ -11,7 +11,7 @@ def get_referral_link(user_id: int, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    referral_link = f"https://yourdomain.com/register?referral={user.referral_code}"
+    referral_link = f"https://vomychat.com/register?referral={user.referral_code}"
     return {"referral_link": referral_link}
 
 @router.get("/referral-stats")
