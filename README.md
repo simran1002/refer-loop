@@ -30,17 +30,22 @@ pytest test_auth.py -s
 
 ---
 
-## **📝 Test Cases**
-
- `test_register_new_user`  Registers a new user 
- `test_register_existing_user`  Prevents duplicate registration 
- `test_register_with_invalid_referral_code`  Rejects invalid referral codes 
- `test_register_with_self_referral`  Blocks self-referral abuse 
- `test_successful_referral`  Validates referral-based registration 
- `test_successful_login`  Logs in with valid credentials 
- `test_login_invalid_credentials`  Rejects invalid login attempts 
- `test_logout`  Ensures successful logout 
-
+## **📝 API Endpoints**
+### Register a new user
+**POST** `/auth/register`
+### Login and get JWT token
+**POST** `/auth/login`
+### Logout-Clear the HttpOnly cookie
+**POST** `/auth/logout`
+### Request password reset
+**POST** `/password/forgot-password`
+### Reset password using token
+**POST** `/password/reset-password`
+### Generate referral link for user
+**POST** `/referral/referral-link?user_id=1`
+### Generate referral statistics
+**POST** `/referral/referral-stats?user_id=1`
+ 
 ---
 
 ## **🐛 Debugging**
